@@ -15,11 +15,11 @@
         }
         
         body {
-            background-color: #fff5e6;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23ffcc00" x="0" y="0" width="100" height="100"/><path fill="%23ff6b6b" d="M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
-            background-size: 50px 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f5f5f5" x="0" y="0" width="100" height="100"/><path fill="%23d50000" opacity="0.1" d="M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
+            background-size: 30px 30px;
         }
         
         .container {
@@ -28,9 +28,49 @@
             padding: 0 20px;
         }
         
+        /* Wybór urządzenia i języka */
+        .device-language-selector {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .device-options, .language-options {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .device-btn, .language-btn {
+            background: #d50000;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .device-btn:hover, .language-btn:hover {
+            background: #388e3c;
+        }
+        
         /* Header */
         header {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff9e6d 100%);
+            background: linear-gradient(135deg, #d50000 0%, #b71c1c 100%);
             color: white;
             padding: 1.5rem 0;
             text-align: center;
@@ -38,25 +78,49 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 5px dashed #ffcc00;
+            border-bottom: 5px dashed #388e3c;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-image {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #388e3c;
+            overflow: hidden;
+        }
+        
+        .logo-image i {
+            font-size: 3rem;
+            color: #d50000;
         }
         
         .logo {
             font-size: 2.2rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 0 #ffcc00;
+            text-shadow: 2px 2px 0 #388e3c;
         }
         
         .logo span {
-            color: #4ecdc4;
-            text-shadow: 2px 2px 0 #ffcc00;
+            color: #fff;
+            text-shadow: 2px 2px 0 #388e3c;
         }
         
         .class-badge {
             display: inline-block;
-            background: #ffcc00;
-            color: #d50000;
+            background: #388e3c;
+            color: #fff;
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-weight: bold;
@@ -67,9 +131,10 @@
         
         /* Nawigacja */
         nav {
-            background-color: #4ecdc4;
+            background-color: #388e3c;
             padding: 0.8rem 0;
-            border-bottom: 3px solid #ffcc00;
+            border-bottom: 3px solid #d50000;
+            position: relative;
         }
         
         nav ul {
@@ -96,6 +161,29 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
         
+        .language-selector {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .language-selector button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .language-selector button:hover {
+            background: white;
+            color: #388e3c;
+        }
+        
         /* Sekcje */
         .section {
             display: none;
@@ -109,7 +197,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 2.5rem;
-            color: #ff6b6b;
+            color: #d50000;
             font-size: 2.2rem;
             position: relative;
             text-shadow: 2px 2px 0 #ffcc00;
@@ -120,7 +208,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: #4ecdc4;
+            background: #388e3c;
             margin: 0.5rem auto;
             border-radius: 2px;
         }
@@ -136,7 +224,7 @@
         
         .category-btn {
             background: white;
-            border: 2px solid #4ecdc4;
+            border: 2px solid #388e3c;
             color: #333;
             padding: 0.7rem 1.5rem;
             border-radius: 30px;
@@ -146,7 +234,7 @@
         }
         
         .category-btn:hover, .category-btn.active {
-            background: #4ecdc4;
+            background: #388e3c;
             color: white;
         }
         
@@ -163,16 +251,27 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
-            border: 2px solid #ffcc00;
+            border: 2px solid #d50000;
+            position: relative;
         }
         
         .menu-item:hover {
             transform: translateY(-5px);
         }
         
+        .menu-item:before {
+            content: '🎄';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 2rem;
+            z-index: 2;
+            transform: rotate(15deg);
+        }
+        
         .menu-item-image {
             height: 200px;
-            background: linear-gradient(45deg, #ff9e6d, #ff6b6b);
+            background: linear-gradient(45deg, #d50000, #b71c1c);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -189,7 +288,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle fill="%23ffcc00" opacity="0.2" cx="20" cy="20" r="10"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle fill="%23388e3c" opacity="0.2" cx="20" cy="20" r="10"/></svg>');
         }
         
         .menu-item-content {
@@ -199,7 +298,7 @@
         
         .menu-item-title {
             font-size: 1.4rem;
-            color: #ff6b6b;
+            color: #d50000;
             margin-bottom: 0.5rem;
         }
         
@@ -214,10 +313,11 @@
             color: #d50000;
             font-size: 1.5rem;
             margin: 0.5rem 0;
-            background: #ffcc00;
+            background: #ffeb3b;
             display: inline-block;
             padding: 0.3rem 1rem;
             border-radius: 20px;
+            border: 1px dashed #d50000;
         }
         
         /* Sekcja informacji */
@@ -233,18 +333,35 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             text-align: center;
-            border: 2px solid #ffcc00;
+            border: 2px solid #388e3c;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-card:before {
+            content: '🎁';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 4rem;
+            opacity: 0.1;
+            z-index: 0;
+            transform: rotate(-20deg);
         }
         
         .info-card i {
             font-size: 3rem;
-            color: #4ecdc4;
+            color: #388e3c;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
         
         .info-card h3 {
-            color: #ff6b6b;
+            color: #d50000;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
         
         /* Stopka */
@@ -254,7 +371,8 @@
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;
-            border-top: 5px dashed #ffcc00;
+            border-top: 5px dashed #388e3c;
+            position: relative;
         }
         
         .social-icons {
@@ -269,13 +387,13 @@
         }
         
         .social-icons a:hover {
-            color: #4ecdc4;
+            color: #388e3c;
         }
         
         /* Map placeholder */
         .map-placeholder {
             height: 300px;
-            background: #4ecdc4;
+            background: #388e3c;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -283,7 +401,71 @@
             color: white;
             font-size: 1.5rem;
             margin: 2rem 0;
-            border: 2px solid #ffcc00;
+            border: 2px solid #d50000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder:before {
+            content: '❄️';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            opacity: 0.1;
+        }
+        
+        /* Świąteczne dekoracje */
+        .christmas-tree {
+            position: fixed;
+            bottom: 0;
+            left: 20px;
+            font-size: 4rem;
+            z-index: 90;
+            animation: sway 5s infinite alternate ease-in-out;
+            transform-origin: bottom;
+        }
+        
+        .christmas-gifts {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            font-size: 3rem;
+            z-index: 90;
+        }
+        
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        
+        /* Animacja śniegu */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+        
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #ffffff;
+            opacity: 0.8;
+            animation: snowfall linear infinite;
+        }
+        
+        @keyframes snowfall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
         
         /* Responsywność */
@@ -304,13 +486,45 @@
             .logo {
                 font-size: 1.8rem;
             }
+            
+            .language-selector {
+                position: static;
+                transform: none;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            .christmas-tree, .christmas-gifts {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Wybór urządzenia i języka -->
+    <div class="device-language-selector" id="deviceLanguageSelector">
+        <div class="device-options">
+            <h2>Wybierz typ urządzenia:</h2>
+            <button class="device-btn" data-device="computer">Komputer</button>
+            <button class="device-btn" data-device="phone">Telefon</button>
+        </div>
+        <div class="language-options">
+            <h2>Choose language / Wybierz język:</h2>
+            <button class="language-btn" data-lang="pl">Polski</button>
+            <button class="language-btn" data-lang="en">English</button>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
-            <div class="logo">MMD <span>FastFood</span></div>
+            <div class="logo-container">
+                <div class="logo-image">
+                    <i class="fas fa-utensils"></i>
+                    <!-- Tutaj możesz wstawić swoje logo -->
+                    <!-- <img src="scieżka/do/logo.png" alt="MMD FastFood Logo" style="width:100%; height:100%; object-fit:cover;"> -->
+                </div>
+                <div class="logo">MMD <span>FastFood</span></div>
+            </div>
             <p>Szybkie, pyszne, wyjątkowe!</p>
             <div class="class-badge">KLASA 8D</div>
         </div>
@@ -324,6 +538,10 @@
                 <li><a href="#" class="nav-link" data-section="about">O Naszej Budce</a></li>
                 <li><a href="#" class="nav-link" data-section="contact">Gdzie nas znaleźć</a></li>
             </ul>
+            <div class="language-selector">
+                <button id="lang-pl">PL</button>
+                <button id="lang-en">EN</button>
+            </div>
         </div>
     </nav>
     
@@ -374,7 +592,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Klasyczny Burger</h3>
                         <p class="menu-item-desc">Wołowina, sałata, pomidor, ser cheddar, sos BBQ</p>
-                        <p class="menu-item-price">22,99 zł</p>
+                        <p class="menu-item-price">15,99 zł</p>
                     </div>
                 </div>
                 
@@ -385,7 +603,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Pizza Pepperoni</h3>
                         <p class="menu-item-desc">Pepperoni, podwójny ser, sos pomidorowy</p>
-                        <p class="menu-item-price">28,99 zł</p>
+                        <p class="menu-item-price">18,50 zł</p>
                     </div>
                 </div>
                 
@@ -396,7 +614,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Skrzydła Buffalo</h3>
                         <p class="menu-item-desc">Chrupiące skrzydła w ostrej sauce buffalo</p>
-                        <p class="menu-item-price">24,50 zł</p>
+                        <p class="menu-item-price">16,00 zł</p>
                     </div>
                 </div>
                 
@@ -408,7 +626,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Lody Czekoladowe</h3>
                         <p class="menu-item-desc">Kremowe lody czekoladowe z bitą śmietaną</p>
-                        <p class="menu-item-price">12,99 zł</p>
+                        <p class="menu-item-price">8,50 zł</p>
                     </div>
                 </div>
                 
@@ -419,7 +637,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Brownie</h3>
                         <p class="menu-item-desc">Czekoladowe brownie z lodami waniliowymi</p>
-                        <p class="menu-item-price">14,50 zł</p>
+                        <p class="menu-item-price">9,00 zł</p>
                     </div>
                 </div>
                 
@@ -430,7 +648,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Sernik</h3>
                         <p class="menu-item-desc">Klasyczny sernik na zimno z sosem malinowym</p>
-                        <p class="menu-item-price">16,99 zł</p>
+                        <p class="menu-item-price">10,00 zł</p>
                     </div>
                 </div>
                 
@@ -442,7 +660,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Kawa Latte</h3>
                         <p class="menu-item-desc">Kawa latte z mlekiem i pianką</p>
-                        <p class="menu-item-price">12,00 zł</p>
+                        <p class="menu-item-price">7,50 zł</p>
                     </div>
                 </div>
                 
@@ -453,7 +671,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Koktajl Owocowy</h3>
                         <p class="menu-item-desc">Koktajl z truskawek, bananów i mango</p>
-                        <p class="menu-item-price">15,50 zł</p>
+                        <p class="menu-item-price">9,50 zł</p>
                     </div>
                 </div>
                 
@@ -464,7 +682,7 @@
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Cola</h3>
                         <p class="menu-item-desc">Ice cold Coca-Cola 0.5L</p>
-                        <p class="menu-item-price">8,00 zł</p>
+                        <p class="menu-item-price">5,00 zł</p>
                     </div>
                 </div>
             </div>
@@ -531,6 +749,11 @@
         </section>
     </main>
     
+    <!-- Świąteczne dekoracje -->
+    <div class="christmas-tree">🎄</div>
+    <div class="christmas-gifts">🎁🎁🎁</div>
+    <div class="snowflakes" id="snowflakes"></div>
+    
     <footer>
         <div class="container">
             <div class="social-icons">
@@ -543,6 +766,27 @@
     </footer>
 
     <script>
+        // Wybór urządzenia i języka
+        document.querySelectorAll('.device-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const device = this.getAttribute('data-device');
+                if (device === 'phone') {
+                    document.body.style.maxWidth = '480px';
+                    document.body.style.margin = '0 auto';
+                    document.body.style.boxShadow = '0 0 20px rgba(0,0,0,0.3)';
+                }
+                document.getElementById('deviceLanguageSelector').style.display = 'none';
+            });
+        });
+        
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                // Tutaj można dodać zmianę języka
+                document.getElementById('deviceLanguageSelector').style.display = 'none';
+            });
+        });
+        
         // Nawigacja między sekcjami
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -586,6 +830,33 @@
                 });
             });
         });
+        
+        // Animacja śniegu
+        function createSnowflakes() {
+            const snowflakesContainer = document.getElementById('snowflakes');
+            const snowflakeSymbols = ['❄', '❅', '❆', '*'];
+            
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+        
+        createSnowflakes();
+        
+        // Jak wstawić swoje logo - instrukcja:
+        // 1. Przygotuj obrazek logo (najlepiej w formacie PNG przezroczystym tle)
+        // 2. Zmień linię: <i class="fas fa-utensils"></i> 
+        //    na: <img src="scieżka/do/logo.png" alt="MMD FastFood Logo" style="width:100%; height:100%; object-fit:cover;">
+        // 3. Wstaw prawidłową ścieżkę do swojego pliku z logo
     </script>
 </body>
 </html>
