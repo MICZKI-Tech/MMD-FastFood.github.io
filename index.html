@@ -269,15 +269,6 @@
             .logo {
                 font-size: 1.8rem;
             }
-            
-            .category-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .category-btn {
-                width: 200px;
-            }
         }
     </style>
 </head>
@@ -372,42 +363,6 @@
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="food">
-                    <div class="menu-item-image">
-                        <i class="fas fa-hotdog"></i>
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Hot Dog Premium</h3>
-                        <p class="menu-item-desc">Parówka premium, bułka brioche, warzywa, sosy</p>
-                        <p class="menu-item-price">18,50 zł</p>
-                        <button class="order-btn">Zamów</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="food">
-                    <div class="menu-item-image">
-                        <i class="fas fa-cheese"></i>
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Quesadilla</h3>
-                        <p class="menu-item-desc">Placki tortilla z serem, kurczakiem i warzywami</p>
-                        <p class="menu-item-price">21,99 zł</p>
-                        <button class="order-btn">Zamów</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="food">
-                    <div class="menu-item-image">
-                        <i class="fas fa-fish"></i>
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Fish & Chips</h3>
-                        <p class="menu-item-desc">Panierowany filet z dorsza z frytkami</p>
-                        <p class="menu-item-price">26,99 zł</p>
-                        <button class="order-btn">Zamów</button>
-                    </div>
-                </div>
-                
                 <!-- Desery -->
                 <div class="menu-item" data-category="desserts">
                     <div class="menu-item-image">
@@ -441,18 +396,6 @@
                         <h3 class="menu-item-title">Sernik</h3>
                         <p class="menu-item-desc">Klasyczny sernik na zimno z sosem malinowym</p>
                         <p class="menu-item-price">16,99 zł</p>
-                        <button class="order-btn">Zamów</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="desserts">
-                    <div class="menu-item-image">
-                        <i class="fas fa-stroopwafel"></i>
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Gofty</h3>
-                        <p class="menu-item-desc">Wafle z bitą śmietaną i polewą czekoladową</p>
-                        <p class="menu-item-price">15,99 zł</p>
                         <button class="order-btn">Zamów</button>
                     </div>
                 </div>
@@ -493,18 +436,6 @@
                         <button class="order-btn">Zamów</button>
                     </div>
                 </div>
-                
-                <div class="menu-item" data-category="drinks">
-                    <div class="menu-item-image">
-                        <i class="fas fa-wine-bottle"></i>
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Soki Świeże</h3>
-                        <p class="menu-item-desc">Świeżo wyciskane soki pomarańczowe i jabłkowe</p>
-                        <p class="menu-item-price">10,50 zł</p>
-                        <button class="order-btn">Zamów</button>
-                    </div>
-                </div>
             </div>
         </section>
         
@@ -529,12 +460,6 @@
                     <i class="fas fa-leaf"></i>
                     <h3>Składniki</h3>
                     <p>Używamy tylko świeżych, lokalnych składników. Wszystkie nasze dania przygotowywane są na miejscu, codziennie.</p>
-                </div>
-                
-                <div class="info-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Nasz Zespół</h3>
-                    <p>Nasi kucharze to doświadczeni profesjonaliści z pasją do gotowania. Każde danie przygotowują z najwyższą starannością.</p>
                 </div>
             </div>
         </section>
@@ -568,13 +493,6 @@
                     <p>Pon-Pt: 10:00-22:00<br>Sb-Nd: 11:00-23:00</p>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <h3 style="color: #ff6b6b; margin-bottom: 1rem;">Znajdź nas na mapie</h3>
-                <div style="background: #4ecdc4; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                    Mapa dojazdu do MMD FastFood
-                </div>
-            </div>
         </section>
     </main>
     
@@ -584,7 +502,6 @@
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
             <p>&copy; 2025 MMD FastFood - Wszelkie prawa zastrzeżone</p>
             <p>Strona stworzona na Kiermasz2025-MMD INC</p>
@@ -611,9 +528,6 @@
                 // Pokaż odpowiednią sekcję
                 const sectionId = this.getAttribute('data-section');
                 document.getElementById(sectionId).classList.add('active');
-                
-                // Przewiń do góry strony
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
         
@@ -643,55 +557,8 @@
         document.querySelectorAll('.order-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const itemName = this.parentElement.querySelector('.menu-item-title').textContent;
-                const itemPrice = this.parentElement.querySelector('.menu-item-price').textContent;
-                
-                // Tworzymy modal/popup z potwierdzeniem
-                const modal = document.createElement('div');
-                modal.style.position = 'fixed';
-                modal.style.top = '0';
-                modal.style.left = '0';
-                modal.style.width = '100%';
-                modal.style.height = '100%';
-                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-                modal.style.display = 'flex';
-                modal.style.justifyContent = 'center';
-                modal.style.alignItems = 'center';
-                modal.style.zIndex = '1000';
-                
-                modal.innerHTML = `
-                    <div style="background: white; padding: 2rem; border-radius: 10px; text-align: center; max-width: 400px;">
-                        <h2 style="color: #ff6b6b; margin-bottom: 1rem;">Dodano do koszyka!</h2>
-                        <p style="margin-bottom: 1rem;">${itemName}</p>
-                        <p style="font-weight: bold; color: #4ecdc4; margin-bottom: 1.5rem;">${itemPrice}</p>
-                        <button id="close-modal" style="background: #ff6b6b; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer;">Zamknij</button>
-                    </div>
-                `;
-                
-                document.body.appendChild(modal);
-                
-                // Dodajemy obsługę zamknięcia modala
-                document.getElementById('close-modal').addEventListener('click', function() {
-                    document.body.removeChild(modal);
-                });
+                alert(`Dziękujemy! Dodano "${itemName}" do koszyka.`);
             });
-        });
-        
-        // Inicjalizacja strony - ukryj wszystkie sekcje poza aktywną
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ukryj wszystkie sekcje poza aktywną
-            document.querySelectorAll('.section').forEach(section => {
-                if (!section.classList.contains('active')) {
-                    section.style.display = 'none';
-                }
-            });
-            
-            // Dodaj efekt wczytywania dla lepszego UX
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
         });
     </script>
 </body>
