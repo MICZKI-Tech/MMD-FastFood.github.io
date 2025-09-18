@@ -15,9 +15,11 @@
         }
         
         body {
-            background-color: #f8f9fa;
+            background-color: #fff5e6;
             color: #333;
             line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23ffcc00" x="0" y="0" width="100" height="100"/><path fill="%23ff6b6b" d="M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
+            background-size: 50px 50px;
         }
         
         .container {
@@ -36,22 +38,38 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 5px dashed #ffcc00;
         }
         
         .logo {
             font-size: 2.2rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 0 #ffcc00;
         }
         
         .logo span {
             color: #4ecdc4;
+            text-shadow: 2px 2px 0 #ffcc00;
+        }
+        
+        .class-badge {
+            display: inline-block;
+            background: #ffcc00;
+            color: #d50000;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
         }
         
         /* Nawigacja */
         nav {
             background-color: #4ecdc4;
             padding: 0.8rem 0;
+            border-bottom: 3px solid #ffcc00;
         }
         
         nav ul {
@@ -94,6 +112,7 @@
             color: #ff6b6b;
             font-size: 2.2rem;
             position: relative;
+            text-shadow: 2px 2px 0 #ffcc00;
         }
         
         .section-title:after {
@@ -144,10 +163,11 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
+            border: 2px solid #ffcc00;
         }
         
         .menu-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
         
         .menu-item-image {
@@ -158,10 +178,23 @@
             justify-content: center;
             color: white;
             font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-item-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle fill="%23ffcc00" opacity="0.2" cx="20" cy="20" r="10"/></svg>');
         }
         
         .menu-item-content {
             padding: 1.5rem;
+            text-align: center;
         }
         
         .menu-item-title {
@@ -178,27 +211,13 @@
         
         .menu-item-price {
             font-weight: bold;
-            color: #4ecdc4;
-            font-size: 1.3rem;
+            color: #d50000;
+            font-size: 1.5rem;
             margin: 0.5rem 0;
-        }
-        
-        .order-btn {
+            background: #ffcc00;
             display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease;
-            border: none;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-        
-        .order-btn:hover {
-            background: #ff9e6d;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
         }
         
         /* Sekcja informacji */
@@ -214,6 +233,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             text-align: center;
+            border: 2px solid #ffcc00;
         }
         
         .info-card i {
@@ -234,6 +254,7 @@
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;
+            border-top: 5px dashed #ffcc00;
         }
         
         .social-icons {
@@ -249,6 +270,20 @@
         
         .social-icons a:hover {
             color: #4ecdc4;
+        }
+        
+        /* Map placeholder */
+        .map-placeholder {
+            height: 300px;
+            background: #4ecdc4;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 2rem 0;
+            border: 2px solid #ffcc00;
         }
         
         /* Responsywność */
@@ -277,6 +312,7 @@
         <div class="container">
             <div class="logo">MMD <span>FastFood</span></div>
             <p>Szybkie, pyszne, wyjątkowe!</p>
+            <div class="class-badge">KLASA 8D</div>
         </div>
     </header>
     
@@ -284,9 +320,9 @@
         <div class="container">
             <ul>
                 <li><a href="#" class="nav-link active" data-section="home">Strona Główna</a></li>
-                <li><a href="#" class="nav-link" data-section="menu">Menu</a></li>
-                <li><a href="#" class="nav-link" data-section="about">O Nas</a></li>
-                <li><a href="#" class="nav-link" data-section="contact">Kontakt</a></li>
+                <li><a href="#" class="nav-link" data-section="menu">Menu i Ceny</a></li>
+                <li><a href="#" class="nav-link" data-section="about">O Naszej Budce</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Gdzie nas znaleźć</a></li>
             </ul>
         </div>
     </nav>
@@ -298,25 +334,29 @@
             <div class="info-grid">
                 <div class="info-card">
                     <i class="fas fa-hamburger"></i>
-                    <h3>Najlepsze Burgery</h3>
+                    <h3>Najlepsze Burgery na Kiermaszu</h3>
                     <p>Świeże, soczyste burgery przygotowywane z najlepszych składników</p>
                 </div>
                 <div class="info-card">
-                    <i class="fas fa-truck"></i>
-                    <h3>Szybka Dostawa</h3>
-                    <p>Dostarczamy zamówienia w ciągu 30 minut lub zwracamy pieniądze</p>
+                    <i class="fas fa-utensils"></i>
+                    <h3>Jedzenie na miejscu</h3>
+                    <p>Zapraszamy do naszej budki klasy 8D po pyszne jedzenie</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-award"></i>
                     <h3>Najwyższa Jakość</h3>
-                    <p>Wszystkie potrawy przygotowujemy codziennie ze świeżych produktów</p>
+                    <p>Wszystkie potrawy przygotowujemy ze świeżych produktów</p>
                 </div>
+            </div>
+            
+            <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt"></i> Znajdź naszą budkę na kiermaszu!
             </div>
         </section>
         
         <!-- Menu -->
         <section id="menu" class="section">
-            <h2 class="section-title">Nasze Menu</h2>
+            <h2 class="section-title">Nasze Menu i Ceny</h2>
             
             <div class="category-buttons">
                 <button class="category-btn active" data-category="all">Wszystko</button>
@@ -335,7 +375,6 @@
                         <h3 class="menu-item-title">Klasyczny Burger</h3>
                         <p class="menu-item-desc">Wołowina, sałata, pomidor, ser cheddar, sos BBQ</p>
                         <p class="menu-item-price">22,99 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -347,7 +386,6 @@
                         <h3 class="menu-item-title">Pizza Pepperoni</h3>
                         <p class="menu-item-desc">Pepperoni, podwójny ser, sos pomidorowy</p>
                         <p class="menu-item-price">28,99 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -359,7 +397,6 @@
                         <h3 class="menu-item-title">Skrzydła Buffalo</h3>
                         <p class="menu-item-desc">Chrupiące skrzydła w ostrej sauce buffalo</p>
                         <p class="menu-item-price">24,50 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -372,7 +409,6 @@
                         <h3 class="menu-item-title">Lody Czekoladowe</h3>
                         <p class="menu-item-desc">Kremowe lody czekoladowe z bitą śmietaną</p>
                         <p class="menu-item-price">12,99 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -384,7 +420,6 @@
                         <h3 class="menu-item-title">Brownie</h3>
                         <p class="menu-item-desc">Czekoladowe brownie z lodami waniliowymi</p>
                         <p class="menu-item-price">14,50 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -396,7 +431,6 @@
                         <h3 class="menu-item-title">Sernik</h3>
                         <p class="menu-item-desc">Klasyczny sernik na zimno z sosem malinowym</p>
                         <p class="menu-item-price">16,99 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -409,7 +443,6 @@
                         <h3 class="menu-item-title">Kawa Latte</h3>
                         <p class="menu-item-desc">Kawa latte z mlekiem i pianką</p>
                         <p class="menu-item-price">12,00 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -421,7 +454,6 @@
                         <h3 class="menu-item-title">Koktajl Owocowy</h3>
                         <p class="menu-item-desc">Koktajl z truskawek, bananów i mango</p>
                         <p class="menu-item-price">15,50 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
                 
@@ -433,7 +465,6 @@
                         <h3 class="menu-item-title">Cola</h3>
                         <p class="menu-item-desc">Ice cold Coca-Cola 0.5L</p>
                         <p class="menu-item-price">8,00 zł</p>
-                        <button class="order-btn">Zamów</button>
                     </div>
                 </div>
             </div>
@@ -441,56 +472,60 @@
         
         <!-- O Nas -->
         <section id="about" class="section">
-            <h2 class="section-title">O Nas</h2>
+            <h2 class="section-title">O Naszej Budce</h2>
             
             <div class="info-grid">
                 <div class="info-card">
-                    <i class="fas fa-history"></i>
-                    <h3>Nasza Historia</h3>
-                    <p>MMD FastFood powstało w 2025 roku z pasji do dobrego jedzenia. Zaczynaliśmy jako mały stoisko na kiermaszu, a dziś jesteśmy rozpoznawalną marką.</p>
+                    <i class="fas fa-school"></i>
+                    <h3>Klasa 8D</h3>
+                    <p>Jesteśmy uczniami klasy 8D, którzy postanowili zrobić coś wyjątkowego na kiermasz szkolny 2025!</p>
                 </div>
                 
                 <div class="info-card">
                     <i class="fas fa-heart"></i>
-                    <h3>Nasza Misja</h3>
-                    <p>Chcemy dostarczać naszym klientom najwyższej jakości jedzenie, przygotowywane z pasją i z najlepszych składników.</p>
+                    <h3>Nasza Pasja</h3>
+                    <p>Łączymy siły, aby przygotować dla Was pyszne jedzenie i świetnie się przy tym bawić!</p>
                 </div>
                 
                 <div class="info-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Składniki</h3>
-                    <p>Używamy tylko świeżych, lokalnych składników. Wszystkie nasze dania przygotowywane są na miejscu, codziennie.</p>
+                    <i class="fas fa-users"></i>
+                    <h3>Zespół</h3>
+                    <p>Wspólnie pracujemy przy przygotowaniu posiłków i obsłudze naszej budki fast food.</p>
                 </div>
+            </div>
+            
+            <div class="info-card" style="margin-top: 2rem;">
+                <i class="fas fa-info-circle"></i>
+                <h3>Dlaczego warto nas odwiedzić?</h3>
+                <p>Nasza budka to nie tylko jedzenie, to także świetna atmosfera i zabawa! Wszystkie potrawy przygotowujemy samodzielnie, dbając o najwyższą jakość i smak. Zapraszamy do naszej budki klasy 8D!</p>
             </div>
         </section>
         
         <!-- Kontakt -->
         <section id="contact" class="section">
-            <h2 class="section-title">Kontakt</h2>
+            <h2 class="section-title">Gdzie nas znaleźć</h2>
+            
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i> Mapa kiermaszu z lokalizacją naszej budki
+            </div>
             
             <div class="info-grid">
                 <div class="info-card">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3>Adres</h3>
-                    <p>ul. Kiermaszowa 2025<br>00-001 Warszawa</p>
-                </div>
-                
-                <div class="info-card">
-                    <i class="fas fa-phone"></i>
-                    <h3>Telefon</h3>
-                    <p>+48 123 456 789</p>
-                </div>
-                
-                <div class="info-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>kontakt@mmd-fastfood.pl</p>
+                    <h3>Lokalizacja</h3>
+                    <p>Kiermasz Szkolny 2025<br>Budynek szkoły, teren zewnętrzny<br>Stoisko klasy 8D</p>
                 </div>
                 
                 <div class="info-card">
                     <i class="fas fa-clock"></i>
                     <h3>Godziny Otwarcia</h3>
-                    <p>Pon-Pt: 10:00-22:00<br>Sb-Nd: 11:00-23:00</p>
+                    <p>Pon-Pt: 10:00-16:00<br>Sb: 11:00-15:00</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Dodatkowe Informacje</h3>
+                    <p>Przyjmujemy tylko płatność gotówką. Zapraszamy!</p>
                 </div>
             </div>
         </section>
@@ -501,10 +536,9 @@
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
-            <p>&copy; 2025 MMD FastFood - Wszelkie prawa zastrzeżone</p>
-            <p>Strona stworzona na Kiermasz2025-MMD INC</p>
+            <p>&copy; 2025 MMD FastFood - Klasa 8D</p>
+            <p>Strona stworzona na Kiermasz2025</p>
         </div>
     </footer>
 
@@ -550,14 +584,6 @@
                         item.style.display = 'none';
                     }
                 });
-            });
-        });
-        
-        // Symulacja zamówienia
-        document.querySelectorAll('.order-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemName = this.parentElement.querySelector('.menu-item-title').textContent;
-                alert(`Dziękujemy! Dodano "${itemName}" do koszyka.`);
             });
         });
     </script>
