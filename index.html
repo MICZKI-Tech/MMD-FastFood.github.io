@@ -1,1 +1,565 @@
-test
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMD FastFood - Kiermasz2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset i podstawowe style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff9e6d 100%);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo span {
+            color: #4ecdc4;
+        }
+        
+        /* Nawigacja */
+        nav {
+            background-color: #4ecdc4;
+            padding: 0.8rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Sekcje */
+        .section {
+            display: none;
+            padding: 3rem 0;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #ff6b6b;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #4ecdc4;
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        /* Kategorie menu */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 2px solid #4ecdc4;
+            color: #333;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: #4ecdc4;
+            color: white;
+        }
+        
+        /* Menu items */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item-image {
+            height: 200px;
+            background: linear-gradient(45deg, #ff9e6d, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+        
+        .menu-item-title {
+            font-size: 1.4rem;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-item-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .menu-item-price {
+            font-weight: bold;
+            color: #4ecdc4;
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+        }
+        
+        .order-btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        
+        .order-btn:hover {
+            background: #ff9e6d;
+        }
+        
+        /* Sekcja informacji */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .info-card i {
+            font-size: 3rem;
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+        
+        /* Stopka */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #4ecdc4;
+        }
+        
+        /* Responsywność */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">MMD <span>FastFood</span></div>
+            <p>Szybkie, pyszne, wyjątkowe!</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="home">Strona Główna</a></li>
+                <li><a href="#" class="nav-link" data-section="menu">Menu</a></li>
+                <li><a href="#" class="nav-link" data-section="about">O Nas</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <!-- Strona Główna -->
+        <section id="home" class="section active">
+            <h2 class="section-title">Witamy w MMD FastFood!</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-hamburger"></i>
+                    <h3>Najlepsze Burgery</h3>
+                    <p>Świeże, soczyste burgery przygotowywane z najlepszych składników</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Szybka Dostawa</h3>
+                    <p>Dostarczamy zamówienia w ciągu 30 minut lub zwracamy pieniądze</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Najwyższa Jakość</h3>
+                    <p>Wszystkie potrawy przygotowujemy codziennie ze świeżych produktów</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Menu -->
+        <section id="menu" class="section">
+            <h2 class="section-title">Nasze Menu</h2>
+            
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">Wszystko</button>
+                <button class="category-btn" data-category="food">Jedzenie</button>
+                <button class="category-btn" data-category="desserts">Desery</button>
+                <button class="category-btn" data-category="drinks">Napoje</button>
+            </div>
+            
+            <div class="menu-items">
+                <!-- Jedzenie -->
+                <div class="menu-item" data-category="food">
+                    <div class="menu-item-image">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Klasyczny Burger</h3>
+                        <p class="menu-item-desc">Wołowina, sałata, pomidor, ser cheddar, sos BBQ</p>
+                        <p class="menu-item-price">22,99 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="food">
+                    <div class="menu-item-image">
+                        <i class="fas fa-pizza-slice"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Pizza Pepperoni</h3>
+                        <p class="menu-item-desc">Pepperoni, podwójny ser, sos pomidorowy</p>
+                        <p class="menu-item-price">28,99 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="food">
+                    <div class="menu-item-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Skrzydła Buffalo</h3>
+                        <p class="menu-item-desc">Chrupiące skrzydła w ostrej sauce buffalo</p>
+                        <p class="menu-item-price">24,50 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <!-- Desery -->
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-image">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Lody Czekoladowe</h3>
+                        <p class="menu-item-desc">Kremowe lody czekoladowe z bitą śmietaną</p>
+                        <p class="menu-item-price">12,99 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-image">
+                        <i class="fas fa-cookie"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Brownie</h3>
+                        <p class="menu-item-desc">Czekoladowe brownie z lodami waniliowymi</p>
+                        <p class="menu-item-price">14,50 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-image">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Sernik</h3>
+                        <p class="menu-item-desc">Klasyczny sernik na zimno z sosem malinowym</p>
+                        <p class="menu-item-price">16,99 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <!-- Napoje -->
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Kawa Latte</h3>
+                        <p class="menu-item-desc">Kawa latte z mlekiem i pianką</p>
+                        <p class="menu-item-price">12,00 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Koktajl Owocowy</h3>
+                        <p class="menu-item-desc">Koktajl z truskawek, bananów i mango</p>
+                        <p class="menu-item-price">15,50 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Cola</h3>
+                        <p class="menu-item-desc">Ice cold Coca-Cola 0.5L</p>
+                        <p class="menu-item-price">8,00 zł</p>
+                        <button class="order-btn">Zamów</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- O Nas -->
+        <section id="about" class="section">
+            <h2 class="section-title">O Nas</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Nasza Historia</h3>
+                    <p>MMD FastFood powstało w 2025 roku z pasji do dobrego jedzenia. Zaczynaliśmy jako mały stoisko na kiermaszu, a dziś jesteśmy rozpoznawalną marką.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Nasza Misja</h3>
+                    <p>Chcemy dostarczać naszym klientom najwyższej jakości jedzenie, przygotowywane z pasją i z najlepszych składników.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Składniki</h3>
+                    <p>Używamy tylko świeżych, lokalnych składników. Wszystkie nasze dania przygotowywane są na miejscu, codziennie.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Kontakt -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Kontakt</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adres</h3>
+                    <p>ul. Kiermaszowa 2025<br>00-001 Warszawa</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Telefon</h3>
+                    <p>+48 123 456 789</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>kontakt@mmd-fastfood.pl</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Godziny Otwarcia</h3>
+                    <p>Pon-Pt: 10:00-22:00<br>Sb-Nd: 11:00-23:00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 MMD FastFood - Wszelkie prawa zastrzeżone</p>
+            <p>Strona stworzona na Kiermasz2025-MMD INC</p>
+        </div>
+    </footer>
+
+    <script>
+        // Nawigacja między sekcjami
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Usuń klasę active ze wszystkich linków
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Dodaj klasę active do klikniętego linku
+                this.classList.add('active');
+                
+                // Ukryj wszystkie sekcje
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Pokaż odpowiednią sekcję
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+        
+        // Filtrowanie menu
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Usuń klasę active ze wszystkich przycisków
+                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                
+                // Dodaj klasę active do klikniętego przycisku
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Pokaż/ukryj elementy menu
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Symulacja zamówienia
+        document.querySelectorAll('.order-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.parentElement.querySelector('.menu-item-title').textContent;
+                alert(`Dziękujemy! Dodano "${itemName}" do koszyka.`);
+            });
+        });
+    </script>
+</body>
+</html>
